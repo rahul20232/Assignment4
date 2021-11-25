@@ -1,6 +1,3 @@
-import java.awt.print.Book;
-import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 class Racks{
@@ -56,109 +53,8 @@ class CompareTitles implements Comparable<Title>{
     private int i = 0;
     @Override
     public int Compare(Title T1, Title T2){
-        int n1 = T1.getTitle().length();
-        int n2 = T2.getTitle().length();
-        int N;
-        if(n1<n2){
-            N  = n1;
-        }
-        else{
-            N = n2;
-        }
-        while(i!=N-1){
-            if(getAsciiofnth(T1.getTitle(),i)<getAsciiofnth(T2.getTitle(),i)){
-                return -1;
-            }
-            else if(getAsciiofnth(T1.getTitle(),i)>getAsciiofnth(T2.getTitle(),i)){
-                return 1;
-            }
-            else{
-                i+= 1;
-            }
-        }
-        return 0;
-    }
-    public int getAsciiofnth(String s, int n){
-        s = s.toLowerCase();
-        if(s.equals("a")){
-            return 97;
-        }
-        if(s.equals("b")){
-            return 98;
-        }
-        if(s.equals("c")){
-            return 99;
-        }
-        if(s.equals("d")){
-            return 100;
-        }
-        if(s.equals("e")){
-            return 101;
-        }
-        if(s.equals("f")){
-            return 102;
-        }
-        if(s.equals("g")){
-            return 103;
-        }
-        if(s.equals("h")){
-            return 104;
-        }
-        if(s.equals("i")){
-            return 105;
-        }
-        if(s.equals("j")){
-            return 106;
-        }
-        if(s.equals("k")){
-            return 107;
-        }
-        if(s.equals("l")){
-            return 108;
-        }
-        if(s.equals("m")){
-            return 109;
-        }
-        if(s.equals("n")){
-            return 110;
-        }
-        if(s.equals("o")){
-            return 111;
-        }
-        if(s.equals("p")){
-            return 112;
-        }
-        if(s.equals("q")){
-            return 113;
-        }
-        if(s.equals("r")){
-            return 114;
-        }
-        if(s.equals("s")){
-            return 115;
-        }
-        if(s.equals("t")){
-            return 116;
-        }
-        if(s.equals("u")){
-            return 117;
-        }
-        if(s.equals("v")){
-            return 118;
-        }
-        if(s.equals("w")){
-            return 119;
-        }
-        if(s.equals("x")){
-            return 120;
-        }
-        if(s.equals("y")){
-            return 121;
-        }
-        if(s.equals("z")){
-            return 122;
-        }
-        return 0;
+        int N = T1.getTitle().compareTo(T2.getTitle());
+        return N;
     }
 }
 class CompareISBN implements Comparable<ISBN>{
@@ -297,4 +193,3 @@ public class Main {
         return books;
     }
 }
-
