@@ -154,7 +154,7 @@ public class Main {
     public static Books[] sort(Books[] books){
         for(int i = 0;i<books.length;i++){
             for(int j = i;j<books.length;j++){
-                CompareTitles c = new CompareTitles();
+                Comparable c = new CompareTitles();
                 int N = c.Compare(books[i].getTitle(),books[j].getTitle());
                 if(N==1){
                     Books B = books[j];
@@ -165,7 +165,7 @@ public class Main {
                     continue;
                 }
                 if(N==0){
-                    CompareISBN c1 = new CompareISBN();
+                    Comparable c1 = new CompareISBN();
                     int N1 = c1.Compare(books[i].getISBN(),books[j].getISBN());
                     if(N1==1){
                         Books B = books[j];
@@ -176,7 +176,7 @@ public class Main {
                         continue;
                     }
                     if(N1==0){
-                        Comparebarcode c2 = new Comparebarcode();
+                        Comparable c2 = new Comparebarcode();
                         int N2 = c2.Compare(books[i].getBarcode(),books[j].getBarcode());
                         if(N2==1){
                             Books B = books[j];
