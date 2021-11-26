@@ -53,6 +53,7 @@ class Negative implements  ComputeNegative{
                 }
                 System.out.println();
             }
+            System.out.println();
             System.out.println("Negative green Matrix");
             for(int i = 0;i< ((RGBMatrix) first).getRows();i++){
                 for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
@@ -60,6 +61,7 @@ class Negative implements  ComputeNegative{
                 }
                 System.out.println();
             }
+            System.out.println();
             System.out.println("Negative Blue Matrix");
             for(int i = 0;i< ((RGBMatrix) first).getRows();i++){
                 for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
@@ -193,52 +195,206 @@ public class A4_2 {
                 if(n1==1){
                     System.out.println("Enter id: ");
                     String id = sc.next();
-                    System.out.println("Enter Dimensions of RGB-Matrices");
-                    System.out.println("Rows: ");
-                    int N = sc.nextInt();
-                    System.out.println("Coloumns: ");
-                    int M = sc.nextInt();
-                    int[][] arr = new int[N][M];
-                    int[][] arr1 = new int[N][M];
-                    int[][] arr2 = new int[N][M];
-                    for(int i = 0;i<N;i++){
-                        System.out.println("Enter elements of "+(i+1)+"th row of R-Matrix");
-                        for(int j = 0;j<M;j++){
-                            arr[i][j] = sc.nextInt();
+                    boolean f = true;
+                    for(int i = 0;i<A.size();i++){
+                        if(A.get(i).getId().equals(id)){
+                            f = false;
                         }
                     }
-                    for(int i = 0;i<N;i++){
-                        System.out.println("Enter elements of "+(i+1)+"th row of G-Matrix");
-                        for(int j = 0;j<M;j++){
-                            arr1[i][j] = sc.nextInt();
+                    if(f){
+                        System.out.println("Enter Dimensions of RGB-Matrices");
+                        System.out.println("Rows: ");
+                        int N = sc.nextInt();
+                        System.out.println("Coloumns: ");
+                        int M = sc.nextInt();
+                        int[][] arr = new int[N][M];
+                        int[][] arr1 = new int[N][M];
+                        int[][] arr2 = new int[N][M];
+                        for(int i = 0;i<N;i++){
+                            System.out.println("Enter elements of "+(i+1)+"th row of R-Matrix");
+                            for(int j = 0;j<M;j++){
+                                arr[i][j] = sc.nextInt();
+                            }
                         }
-                    }
-                    for(int i = 0;i<N;i++){
-                        System.out.println("Enter elements of "+(i+1)+"th row of B-Matrix");
-                        for(int j = 0;j<M;j++){
-                            arr2[i][j] = sc.nextInt();
+                        for(int i = 0;i<N;i++){
+                            System.out.println("Enter elements of "+(i+1)+"th row of G-Matrix");
+                            for(int j = 0;j<M;j++){
+                                arr1[i][j] = sc.nextInt();
+                            }
                         }
+                        for(int i = 0;i<N;i++){
+                            System.out.println("Enter elements of "+(i+1)+"th row of B-Matrix");
+                            for(int j = 0;j<M;j++){
+                                arr2[i][j] = sc.nextInt();
+                            }
+                        }
+                        RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
+                        A.add(RGB);
                     }
-                    RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
-                    A.add(RGB);
+                    else{
+                        System.out.println("Canot choose this id");
+                    }
                 }
                 if(n1==2){
                     System.out.println("Enter id: ");
                     String id = sc.next();
-                    System.out.println("Enter Dimensions");
-                    System.out.println("Rows: ");
-                    int N = sc.nextInt();
-                    System.out.println("Coloumns: ");
-                    int M = sc.nextInt();
-                    int[][] arr = new int[N][M];
-                    for(int i = 0;i<N;i++){
-                        System.out.println("Enter elements of "+(i+1)+"th row");
-                        for(int j = 0;j<M;j++){
-                            arr[i][j] = sc.nextInt();
+                    boolean f = true;
+                    for(int i = 0;i<A.size();i++){
+                        if(A.get(i).getId().equals(id)){
+                            f = false;
                         }
                     }
-                    GrayscaleMatrix G = new GrayscaleMatrix(arr, N, M, id);
-                    A.add(G);
+                    if(f){
+                        System.out.println("Enter Dimensions");
+                        System.out.println("Rows: ");
+                        int N = sc.nextInt();
+                        System.out.println("Coloumns: ");
+                        int M = sc.nextInt();
+                        int[][] arr = new int[N][M];
+                        for(int i = 0;i<N;i++){
+                            System.out.println("Enter elements of "+(i+1)+"th row");
+                            for(int j = 0;j<M;j++){
+                                arr[i][j] = sc.nextInt();
+                            }
+                        }
+                        GrayscaleMatrix G = new GrayscaleMatrix(arr, N, M, id);
+                        A.add(G);
+                    }
+                    else{
+                        System.out.println("Canot choose this id");
+                    }
+                }
+            }
+            if(n==2){
+                System.out.println("1. Null Matrix");
+                System.out.println("2. Ones Matrix");
+                int x = sc.nextInt();
+                if(x==1){
+                    System.out.println("1. Color Image");
+                    System.out.println("2. Grayscale Image");
+                    int y = sc.nextInt();
+                    if(y==1){
+                        System.out.println("Enter id: ");
+                        String id = sc.next();
+                        boolean f = true;
+                        for(int i = 0;i<A.size();i++){
+                            if(A.get(i).getId().equals(id)){
+                                f = false;
+                            }
+                        }
+                        if(f){
+                            System.out.println("Enter Dimensions:");
+                            System.out.println("Rows: ");
+                            int N = sc.nextInt();
+                            System.out.println("Coloumns: ");
+                            int M = sc.nextInt();
+                            int[][] arr = new int[N][M];
+                            int[][] arr1 = new int[N][M];
+                            int[][] arr2 = new int[N][M];
+                            RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
+                            A.add(RGB);
+                        }
+                        else{
+                            System.out.println("Cannot choose this id");
+                        }
+                    }
+                    if(y==2){
+                        System.out.println("Enter id: ");
+                        String id = sc.next();
+                        boolean f = true;
+                        for(int i = 0;i<A.size();i++){
+                            if(A.get(i).getId().equals(id)){
+                                f = false;
+                            }
+                        }
+                        if(f){
+                            System.out.println("Enter Dimensions:");
+                            System.out.println("Rows: ");
+                            int N = sc.nextInt();
+                            System.out.println("Coloumns: ");
+                            int M = sc.nextInt();
+                            int[][] arr = new int[N][M];
+                            GrayscaleMatrix G = new GrayscaleMatrix(arr,N, M, id);
+                            A.add(G);
+                        }
+                        else{
+                            System.out.println("Cannot choose this id");
+                        }
+                    }
+                }
+                if(x==2){
+                    System.out.println("1. Color Image");
+                    System.out.println("2. Grayscale Image");
+                    int y = sc.nextInt();
+                    if(y==1){
+                        System.out.println("Enter id: ");
+                        String id = sc.next();
+                        boolean f = true;
+                        for(int i = 0;i<A.size();i++){
+                            if(A.get(i).getId().equals(id)){
+                                f = false;
+                            }
+                        }
+                        if(f){
+                            System.out.println("Enter Dimensions:");
+                            System.out.println("Rows: ");
+                            int N = sc.nextInt();
+                            System.out.println("Coloumns: ");
+                            int M = sc.nextInt();
+                            int[][] arr = new int[N][M];
+                            int[][] arr1 = new int[N][M];
+                            int[][] arr2 = new int[N][M];
+                            for(int i = 0;i<N;i++){
+                                for(int j = 0;j<M;j++){
+                                    arr[i][j] = 1;
+                                }
+                            }
+                            for(int i = 0;i<N;i++){
+                                for(int j = 0;j<M;j++){
+                                    arr1[i][j] = 1;
+                                }
+                            }
+                            for(int i = 0;i<N;i++){
+                                for(int j = 0;j<M;j++){
+                                    arr2[i][j] = 1;
+                                }
+                            }
+                            RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
+                            A.add(RGB);
+                        }
+                        else{
+                            System.out.println("Cannot choose this id");
+                        }
+
+                    }
+                    if(y==2){
+                        System.out.println("Enter id: ");
+                        String id = sc.next();
+                        boolean f = true;
+                        for(int i = 0;i<A.size();i++){
+                            if(A.get(i).getId().equals(id)){
+                                f = false;
+                            }
+                        }
+                        if(f){
+                            System.out.println("Enter Dimensions:");
+                            System.out.println("Rows: ");
+                            int N = sc.nextInt();
+                            System.out.println("Coloumns: ");
+                            int M = sc.nextInt();
+                            int[][] arr = new int[N][M];
+                            for(int i = 0;i<N;i++){
+                                for(int j = 0;j<M;j++){
+                                    arr[i][j] = 1;
+                                }
+                            }
+                            GrayscaleMatrix G = new GrayscaleMatrix(arr,N, M, id);
+                            A.add(G);
+                        }
+                        else{
+                            System.out.println("Cannot choose this id");
+                        }
+                    }
                 }
             }
             if(n==3){
