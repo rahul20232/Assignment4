@@ -23,7 +23,7 @@ class Racks{
     }
     public void display(){
         for(int i = 0;i<slots;i++){
-            System.out.println(r[i].getTitle().getTitle()+" "+r[i].getISBN().getISBN() +" "+r[i].getBarcode().getbarcode());
+            System.out.println("Slot "+(i+1)+": "+r[i].getTitle().getTitle()+" "+r[i].getISBN().getISBN() +" "+r[i].getBarcode().getbarcode());
         }
     }
 }
