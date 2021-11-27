@@ -7,11 +7,11 @@ interface Matrix<T>{
     public void display();
 }
 interface ComputeNegative<T>{
-    public void Negative(T first);
+    public void negative(T first);
 }
 class Negative implements  ComputeNegative{
     @Override
-    public void Negative(Object first){
+    public void negative(Object first){
         if(first instanceof GrayscaleMatrix){
             int[][] arr1 = new int[((GrayscaleMatrix) first).getRows()][((GrayscaleMatrix) first).getColoumns()];
             for(int i= 0;i< ((GrayscaleMatrix) first).getRows();i++){
@@ -210,26 +210,54 @@ public class A4_2 {
                         int[][] arr = new int[N][M];
                         int[][] arr1 = new int[N][M];
                         int[][] arr2 = new int[N][M];
+                        boolean flag1 = true;
                         for(int i = 0;i<N;i++){
-                            System.out.println("Enter elements of "+(i+1)+"th row of R-Matrix");
+                            System.out.println("Enter elements of "+(i+1)+"th row of R-Matrix(0-255)");
                             for(int j = 0;j<M;j++){
-                                arr[i][j] = sc.nextInt();
+                                int x = sc.nextInt();
+                                if(x>255 || x<0){
+                                    flag1 = false;
+                                }
+                                else{
+                                    arr[i][j] = x;
+                                }
                             }
                         }
-                        for(int i = 0;i<N;i++){
-                            System.out.println("Enter elements of "+(i+1)+"th row of G-Matrix");
-                            for(int j = 0;j<M;j++){
-                                arr1[i][j] = sc.nextInt();
+                        if(flag1){
+                            for(int i = 0;i<N;i++){
+                                System.out.println("Enter elements of "+(i+1)+"th row of G-Matrix(0-255)");
+                                for(int j = 0;j<M;j++){
+                                    int x = sc.nextInt();
+                                    if(x>255 || x<0){
+                                        flag1 = false;
+                                    }
+                                    else{
+                                        arr1[i][j] = x;
+                                    }
+                                }
                             }
                         }
-                        for(int i = 0;i<N;i++){
-                            System.out.println("Enter elements of "+(i+1)+"th row of B-Matrix");
-                            for(int j = 0;j<M;j++){
-                                arr2[i][j] = sc.nextInt();
+                        if(flag1){
+                            for(int i = 0;i<N;i++){
+                                System.out.println("Enter elements of "+(i+1)+"th row of B-Matrix(0-255)");
+                                for(int j = 0;j<M;j++){
+                                    int x = sc.nextInt();
+                                    if(x>255 || x<0){
+                                        flag1 = false;
+                                    }
+                                    else{
+                                        arr2[i][j] = x;
+                                    }
+                                }
                             }
                         }
-                        RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
-                        A.add(RGB);
+                        if(flag1){
+                            RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
+                            A.add(RGB);
+                        }
+                        else{
+                            System.out.println("Cannot create matrix");
+                        }
                     }
                     else{
                         System.out.println("Canot choose this id");
@@ -251,14 +279,26 @@ public class A4_2 {
                         System.out.println("Coloumns: ");
                         int M = sc.nextInt();
                         int[][] arr = new int[N][M];
+                        boolean flag1 = true;
                         for(int i = 0;i<N;i++){
-                            System.out.println("Enter elements of "+(i+1)+"th row");
+                            System.out.println("Enter elements of "+(i+1)+"th row(0-255)");
                             for(int j = 0;j<M;j++){
-                                arr[i][j] = sc.nextInt();
+                                int x = sc.nextInt();
+                                if(x>255 || x<0){
+                                    flag1 = false;
+                                }
+                                else{
+                                    arr[i][j] = x;
+                                }
                             }
                         }
-                        GrayscaleMatrix G = new GrayscaleMatrix(arr, N, M, id);
-                        A.add(G);
+                        if(flag1){
+                            GrayscaleMatrix G = new GrayscaleMatrix(arr, N, M, id);
+                            A.add(G);
+                        }
+                        else{
+                            System.out.println("Cannot create matrix");
+                        }
                     }
                     else{
                         System.out.println("Canot choose this id");
@@ -479,8 +519,8 @@ public class A4_2 {
                     }
                 }
                 if(m!=null){
-                    Negative Neg = new Negative();
-                    Neg.Negative(m);
+                    ComputeNegative Neg = new Negative();
+                    Neg.negative(m);
                 }
             }
             if(n==6){
