@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+//Answer to Q2
 interface Matrix<T>{
     public String getId();
     public void display();
@@ -307,7 +308,7 @@ public class A4_2 {
             }
             if(n==2){
                 System.out.println("1. Null Matrix");
-                System.out.println("2. Ones Matrix");
+                System.out.println("2. Ones(255) Matrix");
                 int x = sc.nextInt();
                 if(x==1){
                     System.out.println("1. Color Image");
@@ -386,17 +387,17 @@ public class A4_2 {
                             int[][] arr2 = new int[N][M];
                             for(int i = 0;i<N;i++){
                                 for(int j = 0;j<M;j++){
-                                    arr[i][j] = 1;
+                                    arr[i][j] = 255;
                                 }
                             }
                             for(int i = 0;i<N;i++){
                                 for(int j = 0;j<M;j++){
-                                    arr1[i][j] = 1;
+                                    arr1[i][j] = 255;
                                 }
                             }
                             for(int i = 0;i<N;i++){
                                 for(int j = 0;j<M;j++){
-                                    arr2[i][j] = 1;
+                                    arr2[i][j] = 255;
                                 }
                             }
                             RGBMatrix RGB = new RGBMatrix(arr,arr1,arr2 ,N, M, id);
@@ -425,7 +426,7 @@ public class A4_2 {
                             int[][] arr = new int[N][M];
                             for(int i = 0;i<N;i++){
                                 for(int j = 0;j<M;j++){
-                                    arr[i][j] = 1;
+                                    arr[i][j] = 255;
                                 }
                             }
                             GrayscaleMatrix G = new GrayscaleMatrix(arr,N, M, id);
@@ -454,8 +455,14 @@ public class A4_2 {
                         int c = sc.nextInt();
                         System.out.println("Enter the element to be updated with: ");
                         int elem = sc.nextInt();
-                        ((GrayscaleMatrix) m).setMatrix(r,c,elem);
-                        System.out.println("Element updated");
+                        boolean flag1 = true;
+                        if(elem>255 || elem<0){
+                            System.out.println("Element cannot be updated");
+                        }
+                        else{
+                            ((GrayscaleMatrix) m).setMatrix(r,c,elem);
+                            System.out.println("Element updated");
+                        }
                     }
                     else if(m instanceof RGBMatrix){
                         System.out.println("Select which Matrix needs to be updated: ");
@@ -470,8 +477,13 @@ public class A4_2 {
                             int c = sc.nextInt();
                             System.out.println("Enter the element to be updated with: ");
                             int elem = sc.nextInt();
-                            ((RGBMatrix) m).setRedMatrix(r,c,elem);
-                            System.out.println("Element updated");
+                            if(elem>255 || elem<0){
+                                System.out.println("Element cannot be updated");
+                            }
+                            else{
+                                ((RGBMatrix) m).setRedMatrix(r,c,elem);
+                                System.out.println("Element updated");
+                            }
                         }
                         if(x==2){
                             System.out.println("Enter the row of the element to be updated: ");
@@ -480,8 +492,13 @@ public class A4_2 {
                             int c = sc.nextInt();
                             System.out.println("Enter the element to be updated with: ");
                             int elem = sc.nextInt();
-                            ((RGBMatrix) m).setGreenMatrix(r,c,elem);
-                            System.out.println("Element updated");
+                            if(elem>255 || elem<0){
+                                System.out.println("Element cannot be updated");
+                            }
+                            else{
+                                ((RGBMatrix) m).setGreenMatrix(r,c,elem);
+                                System.out.println("Element updated");
+                            }
                         }
                         if(x==3){
                             System.out.println("Enter the row of the element to be updated: ");
@@ -490,8 +507,13 @@ public class A4_2 {
                             int c = sc.nextInt();
                             System.out.println("Enter the element to be updated with: ");
                             int elem = sc.nextInt();
-                            ((RGBMatrix) m).setBlueMatrix(r,c,elem);
-                            System.out.println("Element updated");
+                            if(elem>255 || elem<0){
+                                System.out.println("Element cannot be updated");
+                            }
+                            else{
+                                ((RGBMatrix) m).setBlueMatrix(r,c,elem);
+                                System.out.println("Element updated");
+                            }
                         }
                     }
                 }
