@@ -5,71 +5,11 @@ import java.util.Scanner;
 interface Matrix<T>{
     public String getId();
     public void display();
+    public void display_negative();
 }
-interface ComputeNegative<T>{
-    public void negative(T first);
-}
-class Negative implements  ComputeNegative{
-    @Override
-    public void negative(Object first){
-        if(first instanceof GrayscaleMatrix){
-            int[][] arr1 = new int[((GrayscaleMatrix) first).getRows()][((GrayscaleMatrix) first).getColoumns()];
-            for(int i= 0;i< ((GrayscaleMatrix) first).getRows();i++){
-                for(int j = 0;j< ((GrayscaleMatrix) first).getColoumns();j++){
-                    arr1[i][j] = 255-((GrayscaleMatrix) first).getMatrix()[i][j];
-                }
-            }
-            System.out.println("Negative Grayscale Matrix");
-            for(int i = 0;i< ((GrayscaleMatrix) first).getRows();i++){
-                for(int j = 0;j< ((GrayscaleMatrix) first).getColoumns();j++){
-                    System.out.print(arr1[i][j]+" |");
-                }
-                System.out.println();
-            }
-        }
-        else if(first instanceof RGBMatrix){
-            int[][] arr1 = new int[((RGBMatrix) first).getRows()][((RGBMatrix) first).getColoumns()];
-            int[][] arr2 = new int[((RGBMatrix) first).getRows()][((RGBMatrix) first).getColoumns()];
-            int[][] arr3 = new int[((RGBMatrix) first).getRows()][((RGBMatrix) first).getColoumns()];
-            for(int i= 0;i< ((RGBMatrix) first).getRows();i++){
-                for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
-                    arr1[i][j] = 255- ((RGBMatrix) first).getRedMatrix()[i][j];
-                }
-            }
-            for(int i= 0;i< ((RGBMatrix) first).getRows();i++){
-                for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
-                    arr2[i][j] = 255-((RGBMatrix) first).getRedMatrix()[i][j];
-                }
-            }
-            for(int i= 0;i< ((RGBMatrix) first).getRows();i++){
-                for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
-                    arr3[i][j] = 255-((RGBMatrix) first).getRedMatrix()[i][j];
-                }
-            }
-            System.out.println("Negative Red Matrix");
-            for(int i = 0;i< ((RGBMatrix) first).getRows();i++){
-                for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
-                    System.out.print(arr1[i][j]+" |");
-                }
-                System.out.println();
-            }
-            System.out.println();
-            System.out.println("Negative green Matrix");
-            for(int i = 0;i< ((RGBMatrix) first).getRows();i++){
-                for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
-                    System.out.print(arr2[i][j]+" |");
-                }
-                System.out.println();
-            }
-            System.out.println();
-            System.out.println("Negative Blue Matrix");
-            for(int i = 0;i< ((RGBMatrix) first).getRows();i++){
-                for(int j = 0;j< ((RGBMatrix) first).getColoumns();j++){
-                    System.out.print(arr3[i][j]+" |");
-                }
-                System.out.println();
-            }
-        }
+class Negative {
+    public void negative(Matrix<?> first) {
+        first.display_negative();
     }
 }
 class GrayscaleMatrix implements Matrix{
@@ -108,6 +48,22 @@ class GrayscaleMatrix implements Matrix{
     }
     public int[][] getMatrix(){
         return this.Matrix;
+    }
+    @Override
+    public void display_negative(){
+        int[][] arr1 = new int[this.rows][this.coloumns];
+        for(int i= 0;i< this.rows;i++){
+            for(int j = 0;j< this.coloumns;j++){
+                arr1[i][j] = 255-getMatrix()[i][j];
+            }
+        }
+        System.out.println("Negative Grayscale Matrix");
+        for(int i = 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                System.out.print(arr1[i][j]+" |");
+            }
+            System.out.println();
+        }
     }
 }
 class RGBMatrix implements Matrix{
@@ -178,6 +134,50 @@ class RGBMatrix implements Matrix{
     }
     public int[][] getBlueMatrix(){
         return this.Blue_Matrix;
+    }
+    @Override
+    public void display_negative(){
+        int[][] arr1 = new int[getRows()][getColoumns()];
+        int[][] arr2 = new int[getRows()][getColoumns()];
+        int[][] arr3 = new int[getRows()][getColoumns()];
+        for(int i= 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                arr1[i][j] = 255- getRedMatrix()[i][j];
+            }
+        }
+        for(int i= 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                arr2[i][j] = 255-getGreenMatrix()[i][j];
+            }
+        }
+        for(int i= 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                arr3[i][j] = 255-getBlueMatrix()[i][j];
+            }
+        }
+        System.out.println("Negative Red Matrix");
+        for(int i = 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                System.out.print(arr1[i][j]+" |");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Negative green Matrix");
+        for(int i = 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                System.out.print(arr2[i][j]+" |");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Negative Blue Matrix");
+        for(int i = 0;i< getRows();i++){
+            for(int j = 0;j< getColoumns();j++){
+                System.out.print(arr3[i][j]+" |");
+            }
+            System.out.println();
+        }
     }
 }
 public class A4_2 {
@@ -519,7 +519,7 @@ public class A4_2 {
                     }
                 }
                 if(m!=null){
-                    ComputeNegative Neg = new Negative();
+                    Negative Neg = new Negative();
                     Neg.negative(m);
                 }
             }
