@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+//Answer to Q1
 class Racks{
     private double slots;
     private Books[] r ;
